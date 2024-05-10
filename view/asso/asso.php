@@ -6,42 +6,43 @@
             <a class="nav-link text-dark text-lg" id="vert-tabs-ticket-tab" data-toggle="pill" href="#vert-tabs-ticket" role="tab" aria-controls="vert-tabs-ticket" aria-selected="false">Ticket</a>
             <a class="nav-link text-dark text-lg" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Stats</a>
             <a class="nav-link text-dark text-lg" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Payement</a>
-
+        </div>
+        <div class="mt-auto text-center">
+            <button type="submit" class="btn btn-secondary" id="act-logout">LOGOUT</button>
         </div>
     </div>
     <div class="col-7 col-sm-9">
         <div class="tab-content" id="vert-tabs-tabContent">
-            <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">
+            <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab" style="height: 60vh;">
                 <?php
-                    include_once 'info.php';
+                include_once 'info.php';
 
-                ?> 
-            </div>
-            <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
-                <?php    
-                    include_once 'view/bingo/formAdd.php';
-
-                ?> 
-            </div>
-            
-            <div class="tab-pane fade" id="vert-tabs-ticket" role="tabpanel" aria-labelledby="vert-tabs-ticket-tab">
-                <?php    
-                    include_once 'view/ticket/formAdd.php';
-                    include_once 'view/ticket/listTicket.php';
-
-                ?> 
-            </div>
-            <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
-                <?php    
-                    include_once 'view/bingo/stats.php';
-                    
                 ?>
             </div>
-            <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
-                <?php    
-                    include_once 'view/asso/payment.php';
 
-                ?> 
+            <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
+                <?php
+                include_once 'view/bingo/formAdd.php';
+
+                ?>
+            </div>
+            <div class="tab-pane fade" id="vert-tabs-ticket" role="tabpanel" aria-labelledby="vert-tabs-ticket-tab" style="height: 60vh;">
+                <?php
+                include_once 'view/ticket/formAdd.php';
+                include_once 'view/ticket/listTicket.php';
+                ?>
+            </div>
+            <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab" style="height: 60vh;">
+                <?php
+                include_once 'view/bingo/stats.php';
+
+                ?>
+            </div>
+            <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab" style="height: 60vh;">
+                <?php
+                include_once 'view/asso/payment.php';
+
+                ?>
             </div>
         </div>
     </div>

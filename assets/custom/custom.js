@@ -7,6 +7,12 @@ $(document).ready(function() {
     commentUser2P = null
     nbrTicket2P = null
 
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
 
     $("#assoc-page").addClass("d-none");
     $("#play2").addClass("d-none");
@@ -320,11 +326,16 @@ $(document).ready(function() {
                 console.log(response)
 
                 if(response){
-                    $("#vert-tabs-home").html(response)
-                    $("#page-play").addClass("d-none");
-                    $("#assoc-page").removeClass("d-none");
-                    $('#btnAssoDecon').html('<button class="btn btn-danger" id="logout">Logout</button>');
-
+                    Toast.fire({
+                        icon: '',
+                        title: 'Loading...'
+                    })
+                    setTimeout(function() {
+                        $("#vert-tabs-home").html(response)
+                        $("#page-play").addClass("d-none");
+                        $("#assoc-page").removeClass("d-none");
+                        $("#modal-login").modal('hide');
+                    }, 3000);
                 }else{
                     console.log("response")
 
@@ -337,23 +348,23 @@ $(document).ready(function() {
             }
         });
     });
-    $('body').on('click', '#logout', function() {
+
+    $('#act-logout').click(function () {
         $.ajax({
             url: 'controllers/AjaxController.php',
             method: 'POST',
             data: {
                 action: 'logout',
             },
-            beforeSend: function () {
+            success: function(response) {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Logout'
+                })
+                setTimeout(function() {
+                    location.reload();
+                }, 3000);
             },
-            success: function (response) {
-                window.location.href = 'http://localhost/bingos';
-            },
-            complete: function () {
-            },
-            error: function (xhr, status, error) {
-                console.log('Erreur de requ te AJAX : ' + status + '\nMessage d\'erreur : ' + error);
-            }
         });
     });
     ///////////////////////////////////////cote User/////////////////////////////////////////////////////////////

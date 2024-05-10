@@ -32,7 +32,13 @@ class AjaxController
                     $controller->logout();
                     
                     break;
-
+                case 'logout':
+                    session_start();
+                    session_unset();
+                    session_destroy();
+                    exit;
+                    
+                    break;
                 case 'newAsso':
                     require_once 'AssociationController.php';
                     require_once '../Database.php';

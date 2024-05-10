@@ -18,6 +18,7 @@ session_start();
     <link rel="stylesheet" href="assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
 
 <body class="hold-transition layout-fixed" style="background-color: #212121;">
@@ -40,9 +41,15 @@ session_start();
                         <li class="nav-item mr-4">
                             <button class="btn btn-warning" data-toggle="modal" data-target="#modal-play" style="width: 200%;">PLAY</button>
                         </li>
-                        <li class="nav-item ml-5 mr-2" id="btnAssoDecon">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#modal-login">ASSOCIATION</button>
-                        </li>
+                        <?php if(isset($_SESSION['user_id'])): ?>
+                            <li class="nav-item ml-5 mr-2">
+                                <button class="btn btn-success" id="asso-page">ASSOCIATION</button>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item ml-5 mr-2">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#modal-login">ASSOCIATION</button>
+                            </li>
+                        <?php endif; ?>
                         <!-- <li class="nav-item ml-5 mr-2">
                             <button class="btn btn-success" id="asso-page">ASSOCIATION</button>
                         </li> -->
@@ -72,6 +79,8 @@ session_start();
     <script src="assets/dist/js/adminlte.js"></script>
     <script src="assets/custom/custom.js"></script>
     <script src="assets/custom/count.js"></script>
+    <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+
 </body>
 
 </html>
