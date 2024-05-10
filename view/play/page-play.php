@@ -44,9 +44,13 @@
                         <td><?php echo $bingo['Ticket price']; ?></td>
                         <td><?php echo $bingo['Status']; ?></td>
                         <td>
-                            <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
-                            <button class="btn btn-primary w-100" data-toggle="modal" data-target="#modal-bingo">See</button>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#modal-result">Finished</button>
+                            <?php if ($bingo['Statut'] == 1) { ?>
+                                <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
+                            <?php } elseif ($bingo['Statut'] == 2) { ?>
+                                <button class="btn btn-primary w-100" data-toggle="modal" data-target="#modal-bingo">See</button>
+                            <?php } elseif ($bingo['Statut'] == 3) { ?>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#modal-result">Finished</button>
+                            <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>
