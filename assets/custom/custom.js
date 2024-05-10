@@ -18,6 +18,8 @@ $(document).ready(function() {
     $("#assoc-page").addClass("d-none");
     $("#play2").addClass("d-none");
     $("#play3").addClass("d-none");
+    $("#play-home2").addClass("d-none");
+    $("#play-home3").addClass("d-none");
     $("#pop-signup").addClass("d-none");
     $('#num_32').css("color", "white");
 
@@ -37,6 +39,17 @@ $(document).ready(function() {
         $("#play1").addClass("d-none");
         $("#play2").addClass("d-none");
         $("#play3").removeClass("d-none");
+    });
+
+    $("#valide_play_home").click(function() {
+        $("#play-home1").addClass("d-none");
+        $("#play-home2").removeClass("d-none");
+    });
+
+    $("#valide_payement_home").click(function() {
+        $("#play-home1").addClass("d-none");
+        $("#play-home2").addClass("d-none");
+        $("#play-home3").removeClass("d-none");
     });
     // on click sur ongle info
     $("#vert-tabs-home").click(function() {
