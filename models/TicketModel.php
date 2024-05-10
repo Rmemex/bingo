@@ -9,18 +9,19 @@ class TicketModel
         $this->db = $database->getConnection();
     }
 
-    public function addTicket($bingo, $user, $ticket_grille)
+    public function addTicket($bingo, $user, $ticket_grille, $numTicket)
     {
         $dateAchatTicket = new DateTime();
         $dateAchatTicketStr = $dateAchatTicket->format('Y-m-d H:i:s'); // Convertir l'objet DateTime en chaîne de caractères
 
-        $insertQuery = "INSERT INTO `ticket`(`ticket_bingo`,`ticket_user`,`ticket_grille`,`ticket_dateAchat`)
-                        VALUES (:ticket_bingo, :ticket_user, :ticket_grille, :ticket_dateAchat)";
+        $insertQuery = "INSERT INTO `ticket`(`ticket_bingo`,`ticket_user`,`ticket_grille`,`ticket_dateAchat`,`ticket_numero`)
+                        VALUES (:ticket_bingo, :ticket_user, :ticket_grille, :ticket_dateAchat, :ticket_numero)";
         $insertStmt = $this->db->prepare($insertQuery);
         $insertStmt->bindParam(':ticket_bingo', $bingo);
         $insertStmt->bindParam(':ticket_user', $user);
         $insertStmt->bindParam(':ticket_grille', $ticket_grille);
-        $insertStmt->bindParam(':ticket_dateAchat', $dateAchatTicketStr); // Utiliser la chaîne de caractères de la date
+        $insertStmt->bindParam(':ticket_dateAchat', $dateAchatTicketStr);
+        $insertStmt->bindParam(':ticket_numero', $numTicket);
         $insertStmt->execute();
         return $this->db->lastInsertId();
 
@@ -51,7 +52,6 @@ class TicketModel
                     FROM `ticket` t
                     INNER JOIN `user` u ON t.`ticket_user` = u.`user_id`
                     WHERE t.`ticket_bingo` = :bingoId";
-
 
         $selectStmt = $this->db->prepare($selectQuery);
 

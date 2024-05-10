@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var bingoId2Play = null
     var bingoName2Play = null
+    var bingoTicketPrice2Play = null
 
     nameUser2P = null
     mailUser2P = null
@@ -60,7 +61,6 @@ $(document).ready(function() {
             data: {
                 action: 'getMPayement',
                 tikNumber: $('#tikNumber').val(),
-                
                 
             },
             beforeSend: function () {
@@ -385,6 +385,8 @@ $(document).ready(function() {
 
         bingoId2Play = $(this).closest("tr").find(".idBingo").attr("idBingo");
         bingoName2Play = $(this).closest("tr").find(".idBingo").attr("bingoName");
+        bingoTicketPrice2Play = $(this).closest("tr").find(".idBingo").attr("ticketPrice");
+        bingoticketNumber = $(this).closest("tr").find(".idBingo").attr("bingoticketNumber");
         console.log("ID du bingo sélectionné : " + bingoName2Play);
         $("#bingoNameMod").text(bingoName2Play);
        
@@ -392,15 +394,11 @@ $(document).ready(function() {
     });
 
     $("#valide_payement").click(function() {
-    });
-    $("#valide_payement").click(function() {
         nameUser2P = $('#nameUser').val()
         mailUser2P = $('#mailUser').val()
         commentUser2P = $('#commentUser').val()
         nbrTicket2P = $('#nbrTicket').val()
-        alert(nbrTicket2P)
-        alert(bingoId2Play)
-        alert(bingoTicket)
+
         $.ajax({
             url: 'controllers/AjaxController.php',
             method: 'POST',
@@ -411,6 +409,8 @@ $(document).ready(function() {
                 ticketFirstName : '',
                 ticketMail : mailUser2P,
                 ticketNumber : nbrTicket2P,
+                ticketPrice : bingoTicketPrice2Play,
+                bingoticketNumber : bingoticketNumber,
                 
             },
             beforeSend: function () {

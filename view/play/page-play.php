@@ -37,7 +37,7 @@
                 $listBingo = $bingoController->bingoList();
                 foreach ($listBingo as $bingo) { ?>
                     <tr>
-                        <td class="idBingo" bingoName = "<?php echo $bingo['bingo_name']; ?>" idBingo ="<?php echo $bingo['Bingo_id']; ?>"><?php echo $bingo['DateBingo']; ?></td>
+                        <td class="idBingo" bingoticketNumber="<?php echo $bingo['bingo_ticket_number']; ?>" ticketPrice ="<?php echo $bingo['Ticket price']; ?>"  bingoName = "<?php echo $bingo['bingo_name']; ?>" idBingo ="<?php echo $bingo['Bingo_id']; ?>"><?php echo $bingo['DateBingo']; ?></td>
                         <td ><?php echo $bingo['Association']; ?></td>
                         <td><?php echo $bingo['1st prize']; ?></td>
                         <td><?php echo $bingo['Dotation']; ?></td>

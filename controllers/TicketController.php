@@ -13,7 +13,7 @@ class TicketController
         $this->database = $database;
     }
 
-    public function saveGenerateTicket($bingoTicket, $ticketNumber, $userId)
+    public function saveGenerateTicket($bingoTicket, $ticketNumber, $userId, $numTicket)
     {
         $TicketMod = new TicketModel($this->database);
         $linkMod = new LinkModel($this->database);
@@ -21,8 +21,8 @@ class TicketController
         $genTick = null;
         for ($i = 0; $i < $ticketNumber; $i++) {
             $ticket_grille =$this->generer_ticket();
-            $genTick = $TicketMod->addTicket($bingoTicket, $userId, $ticket_grille);
-            $linkMod->addLink($bingoTicket, $userId, $ticket_grille);
+            $genTick = $TicketMod->addTicket($bingoTicket, $userId, $ticket_grille, $numTicket);
+            $linkMod->addLink($genTick);
 
         }
         return $genTick;

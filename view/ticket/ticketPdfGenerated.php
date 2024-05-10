@@ -109,7 +109,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
             var doc = new jsPDF();

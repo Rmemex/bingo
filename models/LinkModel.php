@@ -13,7 +13,7 @@ class LinkModel
     {
         $linkKey = 'http://localhost/bingos/view/ticketPdfGenerated.php?ticketId=' . urlencode($ticketId);
 
-        $insertQuery = "INSERT INTO `ticket`(`link_ticket`, `link_key`)
+        $insertQuery = "INSERT INTO `link`(`link_ticket`, `link_key`)
                         VALUES (:link_ticket, :link_key)";
         $insertStmt = $this->db->prepare($insertQuery);
         $insertStmt->bindParam(':link_ticket', $ticketId);
