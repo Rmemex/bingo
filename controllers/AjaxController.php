@@ -1,6 +1,5 @@
 <?php
-ob_start();
-if (session_status() === PHP_SESSION_NONE) session_start();
+session_start();
 
 class AjaxController
 {
@@ -122,6 +121,8 @@ class AjaxController
                     require_once 'TicketController.php';
                     require_once '../models/UserModel.php';
                     require_once '../models/BingoModel.php';
+                    require_once '../models/BingoModel.php';
+                    require_once '../models/TransactionModel.php';
                     
                     require_once '../Database.php';
                     $database = Database::getInstance();
@@ -129,26 +130,42 @@ class AjaxController
                     $userMod = new UserModel($database);
 
                     $tickCont = new TicketController($database);
+
                     $bingoTicket = $_POST['bingoTicket'];
                     $ticketName = $_POST['ticketName'];
                     $ticketMail = $_POST['ticketMail'];
-                    $ticketNumber = $_POST['ticketNumber'];
+                    $ticketNumber = intval($_POST['ticketNumber']);
+                    $bingoticketNumber = intval($_POST['bingoticketNumber']);
+                    $ticketPrice = floatval($_POST['ticketPrice']);
+
+
+                    
                     $userId = $userMod->addUser($ticketName, $ticketMail);
                     
                     $bingoMod = new BingoModel($database);
                     $nbTikDisp = $bingoMod->getTicketNumberDispo($bingoTicket);
-                   
                     $tickG = null;
                     $nbTikRes = $nbTikDisp['bingo_ticket_number_dispo'] - $ticketNumber; 
                     if($nbTikRes>0){
-                        
-                        $tickG = $tickCont->saveGenerateTicket($bingoTicket, $ticketNumber, $userId); 
+                        $numTicket = $bingoticketNumber-$nbTikRes;
+                        $tickG = $tickCont->saveGenerateTicket($bingoTicket, $ticketNumber, $userId,$numTicket); 
                         $bingoMod->updateBingoTicketNumberDispo($bingoTicket, $nbTikRes);
-                        $bingoList = $bingoMod->getBingoDispo($_SESSION['association_info']['asso_id']);
+                        $transMod = new TransactionModel($database);
+                        
+                        $dateAchatTicket = new DateTime();
+                        $trans_date = $dateAchatTicket->format('Y-m-d H:i:s');
+                        $trans_amount = $ticketPrice * $ticketNumber;
+
+                        $transMod->addTrans($userId, $trans_amount, $trans_date, $ticketNumber);
                         $html = '';
-                        foreach ($bingoList as $bingo) {
-                            $html .= '<option value="' . $bingo['bingo_id'] . '">' . $bingo['bingo_name'] . '</option>';
+
+                        if(isset($_SESSION['association_info']['asso_id'])){
+                            $bingoList = $bingoMod->getBingoDispo($_SESSION['association_info']['asso_id']);
+                            foreach ($bingoList as $bingo) {
+                                $html .= '<option value="' . $bingo['bingo_id'] . '">' . $bingo['bingo_name'] . '</option>';
+                            }
                         }
+
                         
                         $ticketMod = new TicketModel($database);
                         $tickets = $ticketMod->ticketListSales($_POST['ticketNumber']);

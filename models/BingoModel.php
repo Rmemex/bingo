@@ -91,6 +91,7 @@ class BingoModel
     public function getBingoToday()
     {
         $sql = "SELECT 
+        b.bingo_ticket_number AS bingo_ticket_number, 
         b.bingo_name AS bingo_name, 
         b.bingo_id AS Bingo_id, 
         b.bingo_start AS DateBingo,
