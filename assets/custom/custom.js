@@ -342,7 +342,7 @@ $(document).ready(function() {
                         title: 'Loading...'
                     })
                     setTimeout(function() {
-                        $("#vert-tabs_home").html(response)
+                        $("#vert-tabs-tabContent").html(response)
                         $("#page-play").addClass("d-none");
                         $("#assoc-page").removeClass("d-none");
                         $("#modal-login").modal('hide');
