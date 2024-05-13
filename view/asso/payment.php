@@ -29,6 +29,20 @@
                 </tr>
             </thead>
             <tbody id="payMethod">
+            <?php
+                $database = Database::getInstance();
+
+                require_once 'controllers/PayementController.php';
+                $paysController = new PayementController($database);
+                $pasCMs = $paysController->getAssoPayementM($_SESSION['association_info']['asso_id'] );
+                foreach ($pasCMs as $pasCM) { 
+                    echo "<tr>";
+                    echo "<td class='bingoId' bingoId=".$pasCM['payment_id'].">" . $pasCM['paymentMethod_label'] . "</td>";
+                    echo "<td>" . $pasCM['payment_idStripe'] . "</td>";
+                    echo "</tr>";
+                }   
+                    
+            ?>
              </tbody>
         </table>
     </div>

@@ -32,6 +32,10 @@ class BingoController
         $bingo = new BingoModel($this->database);
         return $bingo->getBingoToday();
     }
-
+    public function bingoListAsso()
+    {
+        $bingo = new BingoModel($this->database);
+        return $bingo->getBingoListByAsso($_SESSION['association_info']['asso_id']);
+    }
 }
 

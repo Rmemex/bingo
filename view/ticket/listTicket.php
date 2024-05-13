@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody id="tickeLiqr">
-                    
+               
                 </tbody>
             </table>
         </div>

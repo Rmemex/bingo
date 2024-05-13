@@ -2,13 +2,13 @@
 <div class="form-group row mt-4">
     <label for="assoc-name" class="col-sm-3 col-form-label">Association name</label>
     <div class="col-sm-7">
-        <input type="text" class="form-control" id="assoc-name" value="<?php if(isset($assoName)) echo $assoName ?>">
+        <input type="text" class="form-control" id="assoc-name" value="<?php if(isset($_SESSION['user_name'])) echo $_SESSION['user_name'] ?>">
     </div>
 </div>
 <div class="form-group row">
     <label for="assoc-mail" class="col-sm-3 col-form-label">Association mail</label>
     <div class="col-sm-7">
-        <input type="text" class="form-control" id="assoc-mail" value="<?php if(isset($assoMail)) echo $assoMail ?>" >
+        <input type="text" class="form-control" id="assoc-mail" value="<?php if(isset($_SESSION['user_mail'])) echo $_SESSION['user_mail'] ?>" >
     </div>
 </div>
 <div class="form-group row">

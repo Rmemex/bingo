@@ -58,7 +58,7 @@
                     require_once 'Database.php';
                     $database = Database::getInstance();
                     include_once 'view/bingo/modal-result.php';
-                    include_once 'view/asso/asso.php';
+                  
                     include_once 'view/bingo/modal-direct.php';
                     include_once 'view/login/modal-login.php';
                     include_once 'view/play/modal-play.php';
