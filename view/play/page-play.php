@@ -27,7 +27,7 @@
                 <th>1st prize</th>
                 <th>Dotation</th>
                 <th>Ticket price</th>
-                <th style="width: 40px">Status</th>
+                <th ></th>
             </tr>
             </thead>
             <tbody>
@@ -42,7 +42,6 @@
                         <td><?php echo $bingo['1st prize']; ?></td>
                         <td><?php echo $bingo['Dotation']; ?></td>
                         <td><?php echo $bingo['Ticket price']; ?></td>
-                        <td><?php echo $bingo['Status']; ?></td>
                         <td>
                             <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
                             
