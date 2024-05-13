@@ -106,19 +106,16 @@ $(document).ready(function() {
                         icon: '',
                         title: 'Loading...'
                     })
-                    setTimeout(function() {
-<<<<<<< Updated upstream
+                    setTimeout(function() 
                         $("#vert-tabs-home").html(response)
                         $("#page-play").addClass("d-none");
                         $("#assoc-page").removeClass("d-none");
                         $("#modal-login").modal('hide');
-=======
                         // $("#vert-tabs-tabContent").html(response)
                         // $("#page-play").addClass("d-none");
                         // $("#assoc-page").removeClass("d-none");
                         // $("#modal-login").modal('hide');
                         window.location.href = "association.php";
->>>>>>> Stashed changes
                     }, 3000);
                 }else{
                     console.log("response")

@@ -41,7 +41,7 @@
                             </h5>
                         </li>
                         <li class="nav-item mr-4">
-                            <button class="btn btn-warning" data-toggle="modal" data-target="#modal-play" style="width: 200%;">PLAY</button>
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#modal-play-home" style="width: 200%;">PLAY</button>
                         </li>
                         <?php if(isset($_SESSION['user_id'])): ?>
                             <li class="nav-item ml-5 mr-2">
@@ -52,9 +52,6 @@
                                 <button class="btn btn-success" data-toggle="modal" data-target="#modal-login">ASSOCIATION</button>
                             </li>
                         <?php endif; ?>
-                        <!-- <li class="nav-item ml-5 mr-2">
-                            <button class="btn btn-success" id="asso-page">ASSOCIATION</button>
-                        </li> -->
                     </ul>
                 </nav>
                 <?php
@@ -65,9 +62,10 @@
                     include_once 'view/bingo/modal-direct.php';
                     include_once 'view/login/modal-login.php';
                     include_once 'view/play/modal-play.php';
+                    include_once 'view/play/modal-play-home.php';
                     include_once 'view/play/page-play.php';
-                ?> 
-            </div>  
+                ?>
+            </div> 
 
             <footer class="text-center mb-2">
                 <strong>Copyright &copy; 2024</strong>

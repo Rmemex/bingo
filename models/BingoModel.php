@@ -143,6 +143,7 @@ class BingoModel
         b.bingo_name AS bingo_name, 
         b.bingo_id AS Bingo_id, 
         b.bingo_start AS DateBingo,
+        b.bingo_statut AS Statut,
         a.asso_name AS Association,
         (
             SELECT l.lot_title
