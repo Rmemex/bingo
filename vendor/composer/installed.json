@@ -236,6 +236,7 @@
             "install-path": "../guzzlehttp/psr7"
         },
         {
+
             "name": "phpmailer/phpmailer",
             "version": "v6.9.1",
             "version_normalized": "6.9.1.0",
@@ -318,6 +319,7 @@
                 }
             ],
             "install-path": "../phpmailer/phpmailer"
+
         },
         {
             "name": "psr/http-factory",
@@ -1416,6 +1418,7 @@
                 }
             ],
             "install-path": "../symfony/routing"
+
         }
     ],
     "dev": true,

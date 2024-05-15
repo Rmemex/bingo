@@ -30,6 +30,9 @@
                         // echo "<td>" . $bingo['bingo_statut'] . "</td>";
                         if ($bingo['bingo_statut'] == 1) { 
                             echo '<td> <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play" id="start-game">Start</button></td>';
+
+                            echo '<td> <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Start</button></td>';
+
                         } elseif ($bingo['bingo_statut'] == 2) { 
                             echo '<td> <button class="btn btn-danger w-100 playBingo" data-toggle="modal" data-target="#modal-play">finished</button></td>';
 

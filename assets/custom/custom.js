@@ -121,18 +121,11 @@ $(document).ready(function() {
                         title: 'Loading...'
                     })
                     setTimeout(function() {
-<<<<<<< Updated upstream
-                        $("#vert-tabs-home").html(response)
-                        $("#page-play").addClass("d-none");
-                        $("#assoc-page").removeClass("d-none");
-                        $("#modal-login").modal('hide');
-=======
                         // $("#vert-tabs-tabContent").html(response)
                         // $("#page-play").addClass("d-none");
                         // $("#assoc-page").removeClass("d-none");
                         // $("#modal-login").modal('hide');
                         window.location.href = "association.php";
->>>>>>> Stashed changes
                     }, 3000);
                 }else{
                     console.log("response")
@@ -180,7 +173,7 @@ $(document).ready(function() {
                 ticketMail : mailUser2P,
                 ticketNumber : nbrTicket2P,
                 ticketPrice : bingoTicketPrice2Play,
-                bingoticketNumber : bingoticketNumber,
+                ticketPrice : bingoticketNumber,
                 
             },
             beforeSend: function () {

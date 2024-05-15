@@ -18,6 +18,7 @@
     <div class="col-sm-5">
     
         <input type="text" class="form-control" id="ticket-name" value="">
+        <input type="text" class="form-control" id="ticket-name" value="<?php echo $_SESSION['association_info']['asso_id']; ?>">
     </div>
 </div>
 <div class="form-group row mt-4">

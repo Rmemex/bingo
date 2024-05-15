@@ -28,6 +28,7 @@
                 <th>Dotation</th>
                 <th>Ticket price</th>
                 <th>Status</th>
+                <th ></th>
             </tr>
             </thead>
             <tbody>
@@ -43,10 +44,8 @@
                         <td><?php echo $bingo['Dotation']; ?></td>
                         <td><?php echo $bingo['Ticket price']; ?></td>
                         <td>
-<<<<<<< Updated upstream
                             <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
-                            
-=======
+                   
                             <?php if ($bingo['Statut'] == 1) { ?>
                                 <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
                             <?php } elseif ($bingo['Statut'] == 2) { ?>
@@ -54,7 +53,8 @@
                             <?php } elseif ($bingo['Statut'] == 3) { ?>
                                 <button class="btn btn-danger w-100" data-toggle="modal" data-target="#modal-result">Finished</button>
                             <?php } ?>
->>>>>>> Stashed changes
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#modal-result">Finished</button>
+                            <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>

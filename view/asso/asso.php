@@ -16,11 +16,13 @@
             <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab" style="height: 70vh;">
                 <?php
                     include_once 'info.php';
+
                 ?>
             </div>
 
             <div class="tab-pane fade fontWhite" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
                 <?php
+
                     include_once 'view/bingo/lisBingoAsso.php';
                     include_once 'view/bingo/formAdd.php';
                 ?>
@@ -29,6 +31,18 @@
                 <?php
                     include_once 'view/ticket/listTicket.php';
                     include_once 'view/ticket/formAdd.php';
+
+                include_once 'view/bingo/lisBingoAsso.php';
+                include_once 'view/bingo/formAdd.php';
+                
+                ?>
+            </div>
+            <div class="tab-pane fade fontWhite" id="vert-tabs-ticket" role="tabpanel" aria-labelledby="vert-tabs-ticket-tab" style="height: 60vh;">
+                <?php
+                    include_once 'view/ticket/ListTicketVendu.php';
+                    include_once 'view/ticket/formAdd.php';
+        
+
                 ?>
             </div>
             <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab" style="height: 70vh;">

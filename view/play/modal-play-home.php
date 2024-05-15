@@ -1,11 +1,11 @@
-<div class="modal fade" id="modal-play" data-backdrop="static">
+<div class="modal fade" id="modal-play-home" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content" style="background-color: #E0E0E0">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <div id="play1" style="height: 85vh;">
+                <div id="play-home1" style="height: 85vh;">
                     <h3 class="text-center mt-4">Choose your BINGO and the Asso you want to help</h3>
                     <div class="container mt-5">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -46,17 +46,17 @@
                             </a>
                         </div>
                     </div>
-<<<<<<< Updated upstream
                     <div class="text-center mb-4">
                         <button type="button" class="btn btn-success btn-lg" style="width: 40%; font-weight: bold; color: black" id="valide_play">PLAY</button>
-=======
 
                     <div class="text-center mt-4 mb-4">
                         <button type="button" class="btn btn-success btn-lg" style="width: 40%; font-weight: bold; color: black" id="valide_play_home">PLAY</button>
->>>>>>> Stashed changes
+
+                        <button type="button" class="btn btn-success btn-lg" style="width: 40%; font-weight: bold; color: black" id="valide_play_home">PLAY</button>
+
                     </div>
                 </div>
-                <div id="play2">
+                <div id="play-home2">
                     <h3 class="text-center mt-4">You are going to help the Asso 1, <br> choose the number of ticket you want</h3>
                     <div class="row align-items-center justify-content-center">
                         <div class="card col-lg-6 p-4 m-4" style="background-color: #FFFFFF;">
@@ -94,10 +94,10 @@
                         </div>
                     </div>
                     <div class="text-center mb-4">
-                        <button type="button" class="btn btn-success btn-lg" style="width: 40%; font-weight: bold; color: black" id="valide_payement">PAYEMENT</button>
+                        <button type="button" class="btn btn-success btn-lg" style="width: 40%; font-weight: bold; color: black" id="valide_payement_home">PAYEMENT</button>
                     </div>
                 </div>
-                <div id="play3" style="height: 85vh;">
+                <div id="play-home3" style="height: 85vh;">
                     <h3 class="text-center mt-4">Payement by CB</h3>
                     <div class="row align-items-center justify-content-center">
                         <div class="card col-lg-6 p-4 m-4" style="background-color: #FFFFFF;">
@@ -109,7 +109,7 @@
                         <h3 class="mt-4 mb-5">Thanks, and good LUCK!</h3>
                     </div>
                     <div class="text-center mt-5">
-                        <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" style="width: 40%; font-weight: bold; color: black" id="valide_ok">OK</button>
+                        <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" style="width: 40%; font-weight: bold; color: black" id="valide_ok_home">OK</button>
                     </div>
                 </div>
             </div>

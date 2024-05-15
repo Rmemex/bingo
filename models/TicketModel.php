@@ -30,6 +30,7 @@ class TicketModel
     public function ticketById($bingoId)
     {
         $selectQuery = "SELECT u.user_name,ticket_numero, u.user_mail, t.ticket_grille, b.bingo_ticket_number, t.ticket_numero,b.bingo_name,b.bingo_id
+        $selectQuery = "SELECT u.user_name,ticket_numero, u.user_mail, t.ticket_grille, b.bingo_ticket_number, t.ticket_numero,b.bingo_name
                         FROM ticket t
                         INNER JOIN user u ON t.ticket_user = u.user_id
                         INNER JOIN bingo b ON t.ticket_bingo = b.bingo_id

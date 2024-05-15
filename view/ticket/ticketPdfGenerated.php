@@ -17,6 +17,7 @@
 
 <body>
     <?php
+
         require_once '../../controllers/TicketController.php';
         require_once '../../controllers/AssociationController.php';
 
@@ -41,6 +42,27 @@
             $user_name = 'Nom d\'utilisateur inconnu';
             $bingo_ticket_number = 'Nombre de tickets inconnu';
         }
+
+    require_once __DIR__ . '/../../controllers/TicketController.php';
+
+    require_once '../../Database.php';
+    $database = Database::getInstance();
+    $ticketId = $_GET['ticketId'];
+    // $ticketId = 25370;
+    $tickCont = new TicketController($database);
+    $listTick = $tickCont->showTicket($ticketId);
+
+  
+    if (!empty($listTick)) {
+        $user_name = $listTick[0]['user_name'];
+        $user_mail = $listTick[0]['user_mail'];
+        $bingo_name = $listTick[0]['bingo_name'];
+        $ticket_numero = $listTick[0]['ticket_numero'];
+        $bingo_ticket_number = $listTick[0]['bingo_ticket_number'];
+    } else {
+        $user_name = 'Nom d\'utilisateur inconnu';
+        $bingo_ticket_number = 'Nombre de tickets inconnu';
+    }
     ?>
     <div class="container mt-5" id="ticketIdDiv">
         <!-- Header -->
