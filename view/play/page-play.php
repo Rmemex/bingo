@@ -22,12 +22,12 @@
             <table class="table">
             <thead>
             <tr>
-                <th >Date</th>
+                <th>Date</th>
                 <th>Asso</th>
                 <th>1st prize</th>
                 <th>Dotation</th>
                 <th>Ticket price</th>
-                <th style="width: 40px">Status</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
@@ -42,10 +42,19 @@
                         <td><?php echo $bingo['1st prize']; ?></td>
                         <td><?php echo $bingo['Dotation']; ?></td>
                         <td><?php echo $bingo['Ticket price']; ?></td>
-                        <td><?php echo $bingo['Status']; ?></td>
                         <td>
+<<<<<<< Updated upstream
                             <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
                             
+=======
+                            <?php if ($bingo['Statut'] == 1) { ?>
+                                <button class="btn btn-warning w-100 playBingo" data-toggle="modal" data-target="#modal-play">Play</button>
+                            <?php } elseif ($bingo['Statut'] == 2) { ?>
+                                <button class="btn btn-primary w-100" data-toggle="modal" data-target="#modal-bingo">See</button>
+                            <?php } elseif ($bingo['Statut'] == 3) { ?>
+                                <button class="btn btn-danger w-100" data-toggle="modal" data-target="#modal-result">Finished</button>
+                            <?php } ?>
+>>>>>>> Stashed changes
                         </td>
                     </tr>
                 <?php } ?>

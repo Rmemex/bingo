@@ -11,8 +11,9 @@ class BingoModel
 
     public function addBingo($bingo_name, $bingo_start, $bingo_stop, $bingo_price, $bingo_assoc, $bingo_dotation, $bingo_ticket_number, $bingo_lot_number)
     {
-        $insertQuery = "INSERT INTO `bingo`(`bingo_name`,`bingo_start`,`bingo_stop`,`bingo_price`,`bingo_assoc`,`bingo_dotation`,`bingo_ticket_number`,`bingo_lots_number`,`bingo_ticket_number_dispo`)
-        VALUES (:bingo_name, :bingo_start, :bingo_stop, :bingo_price, :bingo_assoc, :bingo_dotation, :bingo_ticket_number, :bingo_lots_number, :bingo_ticket_number_dispo)";
+        $bingo_statut = 1;
+        $insertQuery = "INSERT INTO `bingo`(`bingo_name`,`bingo_start`,`bingo_stop`,`bingo_price`,`bingo_assoc`,`bingo_dotation`,`bingo_ticket_number`,`bingo_lots_number`,`bingo_ticket_number_dispo`,`bingo_statut`)
+        VALUES (:bingo_name, :bingo_start, :bingo_stop, :bingo_price, :bingo_assoc, :bingo_dotation, :bingo_ticket_number, :bingo_lots_number, :bingo_ticket_number_dispo, :bingo_statut)";
         $insertStmt = $this->db->prepare($insertQuery);
         $insertStmt->bindParam(':bingo_name', $bingo_name);
         $insertStmt->bindParam(':bingo_start', $bingo_start);
@@ -23,10 +24,34 @@ class BingoModel
         $insertStmt->bindParam(':bingo_ticket_number', $bingo_ticket_number);
         $insertStmt->bindParam(':bingo_lots_number', $bingo_lot_number);
         $insertStmt->bindParam(':bingo_ticket_number_dispo', $bingo_ticket_number);
+        $insertStmt->bindParam(':bingo_statut', $bingo_statut);
         $insertStmt->execute();
         $lasId = $this->db->lastInsertId();
         return $lasId;
     }
+    public function getBingoListByAsso($assoId)   
+{
+    $sql = "SELECT 
+                b.bingo_id,
+                b.bingo_name, 
+                b.bingo_stop, 
+                b.bingo_start, 
+                b.bingo_price, 
+                b.bingo_dotation, 
+                b.bingo_statut, 
+                b.bingo_lots_number, 
+                b.bingo_ticket_number_dispo
+            FROM 
+                bingo b
+            WHERE 
+                b.bingo_assoc = :assoId";
+
+    $stmtGet = $this->db->prepare($sql);
+    $stmtGet->bindParam(':assoId', $assoId);
+    $stmtGet->execute(); 
+    return $stmtGet->fetchAll(PDO::FETCH_ASSOC);
+}
+
     public function getBingoDispo($assoId)
     {
         $sql = "SELECT 
@@ -46,15 +71,9 @@ class BingoModel
     }
     public function getLastInsertedBingo($assoId)
     {
-        $sql = "SELECT 
-                    b.bingo_id,
-                    b.bingo_name 
-                FROM 
-                    bingo b
-                WHERE 
-                    b.bingo_stop < CURRENT_DATE() 
-                    AND b.bingo_ticket_number_dispo > 0
-                    AND b.bingo_assoc = :assoId
+        $sql = "SELECT b.bingo_id, b.bingo_name 
+                FROM bingo AS b 
+                WHERE b.bingo_ticket_number_dispo > 0 AND b.bingo_assoc = :assoId
                 ORDER BY 
                     b.bingo_id DESC
                 LIMIT 1";
@@ -68,6 +87,29 @@ class BingoModel
     public function getTicketNumberDispo($bingoId)
     {
         $sql = "SELECT bingo_ticket_number_dispo 
+            FROM bingo 
+            WHERE bingo_id = :bingoId";
+
+        $stmtGet = $this->db->prepare($sql);
+        $stmtGet->bindParam(':bingoId', $bingoId);
+        $stmtGet->execute(); 
+        return $stmtGet->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getBingo_ticket_number($bingoId)
+    {
+        $sql = "SELECT bingo_ticket_number 
+            FROM bingo 
+            WHERE bingo_id = :bingoId";
+
+        $stmtGet = $this->db->prepare($sql);
+        $stmtGet->bindParam(':bingoId', $bingoId);
+        $stmtGet->execute(); 
+        return $stmtGet->fetch(PDO::FETCH_ASSOC);
+    }
+    public function getBingoTicketPrice($bingoId)
+    {
+        $sql = "SELECT bingo_price 
             FROM bingo 
             WHERE bingo_id = :bingoId";
 

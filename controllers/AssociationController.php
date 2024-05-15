@@ -1,7 +1,7 @@
 <?php
-// require_once __DIR__ . '/../models/HistoriqueModel.php';
-require_once '../models/AssociationModel.php';
-require_once '../models/UserModel.php';
+
+require_once __DIR__ . '/../models/UserModel.php';
+require_once __DIR__ . '/../models/AssociationModel.php';
 
 class AssociationController
 
@@ -29,6 +29,10 @@ class AssociationController
         $bingo = new BingoModel($this->database);
         return $bingo->getBingoToday();
     }
-
+    public function getAssoName($bingoId)
+    {
+        $asso = new AssociationModel($this->database);
+        return $asso->getAssoName($bingoId);
+    }
 }
 

@@ -1,14 +1,23 @@
-<h3>Vente De ticket</h3>
 <div class="form-group row mt-4">
     <label for="bingoTicket" class="col-sm-3 col-form-label">Bingo</label>
     <select class="form-control col-sm-5" id="bingoTicket">
-        <option value="1"></option>
+        <?php
+            $database = Database::getInstance();
+            require_once 'models/BingoModel.php';
+            $bingoMod = new BingoModel($database);
+            $bingoSelectList = $bingoMod->getBingoListByAsso($_SESSION['association_info']['asso_id']);
+            var_dump($bingoSelectList);
+            foreach ($bingoSelectList as $bingo) {
+                echo '<option value="' . $bingo['bingo_id'] . '">' . $bingo['bingo_name'] . '</option>';
+            }
+            ?>
     </select>
 </div>
 <div class="form-group row mt-4">
     <label for="ticket-name" class="col-sm-3 col-form-label">name</label>
     <div class="col-sm-5">
-        <input type="text" class="form-control" id="ticket-name">
+    
+        <input type="text" class="form-control" id="ticket-name" value="">
     </div>
 </div>
 <div class="form-group row mt-4">

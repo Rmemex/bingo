@@ -1,4 +1,4 @@
-<h4>Lots Numéro  </h4>
+<h5>Lot n° </h5>
     <div class="form-group row">
         <label for="lot-title" class="col-sm-3 col-form-label">Lot title</label>
         <div class="col-sm-5">
@@ -26,6 +26,6 @@
     <div class="form-group row">
         <label for="lot-description" class="col-sm-3 col-form-label">Description</label>
         <div class="col-sm-5">
-            <textarea class="form-control" rows="3" id="lot-description" name ="lotDescriptionL[] ></textarea>
+            <textarea class="form-control" rows="3" id="lot-description" name ="lotDescriptionL[]" ></textarea>
         </div>
     </div>
