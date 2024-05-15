@@ -4,11 +4,24 @@
   "description": "cron",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-schedule": "^2.1.1"
-  }
+    "express": "^4.19.2",
+    "node-schedule": "^2.1.1",
+    "socket.io": "^4.7.5",
+    "ws": "^8.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rmemex/bingo.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Rmemex/bingo/issues"
+  },
+  "homepage": "https://github.com/Rmemex/bingo#readme"
 }

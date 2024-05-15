@@ -187,34 +187,37 @@ class AjaxController
                         
                         $ticketMod = new TicketModel($database);
                         $tickets = $ticketMod->ticketListSales($_POST['ticketNumber']);
+                        
+                        $bingoLasIns = $bingoMod->getLastInsertedBingo($_SESSION['association_info']['asso_id']);
+                            $html = '';
+                        $tickets = $tickCont->tickekListSales($bingoLasIns['bingo_id']);
 
-                        $tikL = '';
                         foreach ($tickets as $ticket) {
-                            $tikL .=  '<tr>';
-                            $tikL .=  '<td>' . $ticket['ticket_id'] . '</td>';
-                            $tikL .=  '<td>' . $ticket['user_name'] . '</td>';
-                            $tikL .=  '<td>' . $ticket['user_mail'] . '</td>';
-                            $tikL .=  '<td>' . $ticket['ticket_dateAchat'] . '</td>';
-                            $tikL .=  '</tr>';
+                            $html .=  '<tr>';
+                            $html .=  '<td>' . $ticket['ticket_id'] . '</td>';
+                            $html .=  '<td>' . $ticket['user_name'] . '</td>';
+                            $html .=  '<td>' . $ticket['user_mail'] . '</td>';
+                            $html .=  '<td>' . $ticket['ticket_dateAchat'] . '</td>';
+                            $html .=  '</tr>';
                         }   
                         header('Content-Type: text/html; charset=utf-8');
                         // $responseData = array(
                         //     'tikL' => $tikL,
                         //     'html' => $html
                         // );  
-                        $transMod = new TransactionModel($database);
+                        // $transMod = new TransactionModel($database);
 
-                        $listTransactions = $transMod->getListTransByAsso($bingoTicket); 
-                        $html = '';
-                        foreach ($listTransactions as $transaction) {
-                            $html .= "<tr>";
-                            $html .= "<td class='transId' transId=".$transaction['trans_id'].">" . $transaction['trans_nb'] . "</td>";
-                            $html .= "<td> " . $transaction['user_name'] . "</td>";
-                            $html .= "<td>" . $transaction['user_mail'] . "</td>";
-                            $html .= "<td>" . $transaction['trans_amount'] . "</td>";
-                            $html .= "<td>" . $transaction['trans_date'] . "</td>";
-                            $html .= "</tr>";
-                        }
+                        // $listTransactions = $transMod->getListTransByAsso($bingoTicket); 
+                        // $html = '';
+                        // foreach ($listTransactions as $transaction) {
+                        //     $html .= "<tr>";
+                        //     $html .= "<td class='transId' transId=".$transaction['trans_id'].">" . $transaction['trans_nb'] . "</td>";
+                        //     $html .= "<td> " . $transaction['user_name'] . "</td>";
+                        //     $html .= "<td>" . $transaction['user_mail'] . "</td>";
+                        //     $html .= "<td>" . $transaction['trans_amount'] . "</td>";
+                        //     $html .= "<td>" . $transaction['trans_date'] . "</td>";
+                        //     $html .= "</tr>";
+                        // }
                         $responseData = array(
                             'etat' => 1,
                             'tickG' => $tickG,

@@ -18,8 +18,9 @@ $(document).ready(function() {
     $("#assoc-page").addClass("d-none");
     $("#play2").addClass("d-none");
     $("#play3").addClass("d-none");
+    $("#play-home2").addClass("d-none");
+    $("#play-home3").addClass("d-none");
     $("#pop-signup").addClass("d-none");
-    $('#num_32').css("color", "white");
 
     $("#play-page").click(function() {
         $("#assoc-page").addClass("d-none");
@@ -31,12 +32,25 @@ $(document).ready(function() {
         $("#assoc-page").removeClass("d-none");
     });
 
-   
-
     $("#valide_payement").click(function() {
         $("#play1").addClass("d-none");
         $("#play2").addClass("d-none");
         $("#play3").removeClass("d-none");
+    });
+
+    $("#valide_play_home").click(function() {
+        var selectedBingoName = $('.carousel-item.active .bingo-name').text();
+        $('#name-bingo').text(selectedBingoName);
+
+        $("#play-home1").addClass("d-none");
+        $("#play-home3").addClass("d-none");
+        $("#play-home2").removeClass("d-none");
+    });
+
+    $("#valide_payement_home").click(function() {
+        $("#play-home1").addClass("d-none");
+        $("#play-home2").addClass("d-none");
+        $("#play-home3").removeClass("d-none");
     });
     
     $("#go-login").click(function() {
@@ -106,11 +120,7 @@ $(document).ready(function() {
                         icon: '',
                         title: 'Loading...'
                     })
-                    setTimeout(function() 
-                        $("#vert-tabs-home").html(response)
-                        $("#page-play").addClass("d-none");
-                        $("#assoc-page").removeClass("d-none");
-                        $("#modal-login").modal('hide');
+                    setTimeout(function() {
                         // $("#vert-tabs-tabContent").html(response)
                         // $("#page-play").addClass("d-none");
                         // $("#assoc-page").removeClass("d-none");
@@ -163,7 +173,47 @@ $(document).ready(function() {
                 ticketMail : mailUser2P,
                 ticketNumber : nbrTicket2P,
                 ticketPrice : bingoTicketPrice2Play,
-                bingoticketNumber : bingoticketNumber,
+                ticketPrice : bingoticketNumber,
+                
+            },
+            beforeSend: function () {
+            },
+            success: function (response) {
+
+                console.log("infoContent");
+                console.log(response);
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Reussie check your mail'
+                })
+                // location.reload();
+            },
+            complete: function () {
+            },
+            error: function (xhr, status, error) {
+                console.log('Erreur de requ te AJAX : ' + status + '\nMessage d\'erreur : ' + error);
+            }
+        });
+    });
+
+    $("#valide_payement_home").click(function() {
+        nameUser2P = $('#nameUser_home').val()
+        mailUser2P = $('#mailUser_home').val()
+        commentUser2P = $('#commentUser_home').val()
+        nbrTicket2P = $('#nbrTicket_home').val()
+
+        $.ajax({
+            url: 'controllers/AjaxController.php',
+            method: 'POST',
+            data: {
+                action: 'generate_ticket',
+                bingoTicket : bingoId2Play,
+                ticketName : nameUser2P,
+                ticketFirstName : '',
+                ticketMail : mailUser2P,
+                ticketNumber : nbrTicket2P,
+                ticketPrice : bingoTicketPrice2Play,
+                ticketPrice : bingoticketNumber,
                 
             },
             beforeSend: function () {

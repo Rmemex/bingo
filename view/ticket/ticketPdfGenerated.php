@@ -17,6 +17,32 @@
 
 <body>
     <?php
+
+        require_once '../../controllers/TicketController.php';
+        require_once '../../controllers/AssociationController.php';
+
+        require_once '../../Database.php';
+        $database = Database::getInstance();
+        $ticketId = $_GET['ticketId'];
+        // $ticketId = 25370;
+        $tickCont = new TicketController($database);
+        $listTick = $tickCont->showTicket($ticketId);
+
+        $assoCont = new AssociationController($database);
+
+        if (!empty($listTick)) {
+            $user_name = $listTick[0]['user_name'];
+            $user_mail = $listTick[0]['user_mail'];
+            $bingo_name = $listTick[0]['bingo_name'];
+            $ticket_numero = $listTick[0]['ticket_numero'];
+            $bingoId = $listTick[0]['bingo_id'];
+            $bingo_ticket_number = $listTick[0]['bingo_ticket_number'];
+            $assoName = $assoCont->getAssoName($bingoId);
+        } else {
+            $user_name = 'Nom d\'utilisateur inconnu';
+            $bingo_ticket_number = 'Nombre de tickets inconnu';
+        }
+
     require_once __DIR__ . '/../../controllers/TicketController.php';
 
     require_once '../../Database.php';
@@ -52,25 +78,14 @@
         <!-- Bingo Board -->
         <div class="row">
             <div class="col-1">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <td class="rotate-text">O</td>
-                        </tr>
-                        <tr>
-                            <td class="rotate-text">G</td>
-                        </tr>
-                        <tr>
-                            <td class="rotate-text">N</td>
-                        </tr>
-                        <tr>
-                            <td class="rotate-text">I</td>
-                        </tr>
-                        <tr>
-                            <td class="rotate-text">B</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h2 class="rotate-text">
+                    BINGO
+                </h2>
+            </div>
+            <div class="col-1">
+                <h2 class="rotate-text">
+                    <?php echo $assoName; ?>
+                </h2>
             </div>
             <div class="col">
                 <table class="table table-bordered">

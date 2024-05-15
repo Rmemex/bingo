@@ -73,16 +73,16 @@ $(document).ready(function() {
                         icon: 'success',
                         title: 'Ticket generé '
                     })
+                }else{
+                        const tickRes = parseInt(response.nbTikRes)
 
                 }else{
                         const tickRes = parseInt(response.nbTikRes)
-                    
+             
                         Toast.fire({
                             icon: 'success',
                             title: 'Ticket Restant '+response.tickNbDispo
                         })
-                    
-                   
                 }
                 $('input').val("")
                 
@@ -107,6 +107,8 @@ $(document).ready(function() {
         // Boucler pour ajouter le nombre de lots spécifié
         for(var i = 0; i < numberOfLots; i++){
             // Créer le HTML du lot
+            var lotHtml = '<div class="formLot ml-3">';
+            lotHtml += '<h5>Lot n° ' + (i + 1) + '</h5>';
             var lotHtml = '<div class="formLot">';
             lotHtml += '<h4>Lots Numéro ' + (i + 1) + '</h4>';
             lotHtml += '<div class="form-group row">';
@@ -216,6 +218,7 @@ $(document).ready(function() {
     });
 
     $('#act-logout').click(function () {
+        // alert("ici")
         alert("ici")
         $.ajax({
             url: 'controllers/AjaxController.php',

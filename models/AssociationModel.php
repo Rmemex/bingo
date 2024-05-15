@@ -27,6 +27,18 @@ class AssociationModel
 
         return $assoInfo;
     }
+    public function getAssoName($bingoId)
+    {
+        $sql = "SELECT a.asso_name
+                FROM bingo b
+                JOIN association a ON b.bingo_assoc = a.asso_id
+                WHERE b.bingo_id = :bingoId";
+        $stmt  = $this->db->prepare($sql);
+        $stmt->bindParam(':bingoId', $bingoId);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['asso_name'];
+    }
     public function addAssociation($assoName, $assoMail ,$assoDoc, $user)
     {
         $insertQuery = "INSERT INTO `association`(`asso_name`,`asso_mail`,`asso_document`, `user`)

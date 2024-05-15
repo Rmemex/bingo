@@ -29,6 +29,7 @@ class TicketModel
     }
     public function ticketById($bingoId)
     {
+        $selectQuery = "SELECT u.user_name,ticket_numero, u.user_mail, t.ticket_grille, b.bingo_ticket_number, t.ticket_numero,b.bingo_name,b.bingo_id
         $selectQuery = "SELECT u.user_name,ticket_numero, u.user_mail, t.ticket_grille, b.bingo_ticket_number, t.ticket_numero,b.bingo_name
                         FROM ticket t
                         INNER JOIN user u ON t.ticket_user = u.user_id
@@ -61,7 +62,7 @@ class TicketModel
     }
     public function ticketListSales($bingoId)
     {
-        $selectQuery = "SELECT t.`ticket_id`, t.`ticket_bingo`, t.`ticket_user`, t.`ticket_grille`, t.`ticket_dateAchat`,
+        $selectQuery = "SELECT t.`ticket_id`, t.`ticket_bingo`, t.`ticket_user`, t.`ticket_grille`, t.`ticket_dateAchat`, t.`ticket_numero`,
                     u.`user_id`, u.`user_name`, u.`user_mail`
                     FROM `ticket` t
                     INNER JOIN `user` u ON t.`ticket_user` = u.`user_id`
@@ -77,6 +78,7 @@ class TicketModel
 
         return $tickets;
     }
+
     public function setTicket($idAsso)
     {
         $updateQuery = "UPDATE `ticket`

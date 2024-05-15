@@ -61,9 +61,9 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <h3>89 BALLS LEFT</h3>
-                            <div class="rounded-circle mt-2" style="width: 40px; height: 40px; background-color: #B396FF;">
-                                <p style="font-size: 22px;">32</p>
+                            <h3 id="ball-rest">90 BALLS LEFT</h3>
+                            <div id="nbr-tire" class="row"> 
+                                
                             </div>
                         </div>
                     </div>
@@ -80,6 +80,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-center">
+                    <h3 id="end-game" class="d-none">Le jeu est terminé. Merci!</h3>
+                </div>
+                <audio id="drump-sound" src="assets/audio/drump.mp3"></audio>
             </div>
         </div>
     </div>

@@ -17,6 +17,7 @@
     <label for="ticket-name" class="col-sm-3 col-form-label">name</label>
     <div class="col-sm-5">
     
+        <input type="text" class="form-control" id="ticket-name" value="">
         <input type="text" class="form-control" id="ticket-name" value="<?php echo $_SESSION['association_info']['asso_id']; ?>">
     </div>
 </div>

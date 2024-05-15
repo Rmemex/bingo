@@ -71,15 +71,9 @@ class BingoModel
     }
     public function getLastInsertedBingo($assoId)
     {
-        $sql = "SELECT 
-                    b.bingo_id,
-                    b.bingo_name 
-                FROM 
-                    bingo b
-                WHERE 
-                    b.bingo_stop < CURRENT_DATE() 
-                    AND b.bingo_ticket_number_dispo > 0
-                    AND b.bingo_assoc = :assoId
+        $sql = "SELECT b.bingo_id, b.bingo_name 
+                FROM bingo AS b 
+                WHERE b.bingo_ticket_number_dispo > 0 AND b.bingo_assoc = :assoId
                 ORDER BY 
                     b.bingo_id DESC
                 LIMIT 1";
