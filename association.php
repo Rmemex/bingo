@@ -60,7 +60,6 @@
                     include_once 'view/asso/asso.php';
                 ?>
             </div> 
-
             <footer class="text-center mb-2">
                 <strong>Copyright &copy; 2024</strong>
             </footer>
