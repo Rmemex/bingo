@@ -309,15 +309,12 @@ class AjaxController
         }
     }
 
-
-    // M thode utilitaire pour envoyer une r ponse d'erreur
     private function respondWithError($message)
     {
         $result = array('status' => 'error', 'message' => $message);
         $this->respond($result);
     }
 
-    // M thode utilitaire pour envoyer la r ponse JSON
     private function respond($result)
     {
         header('Content-Type: application/json');
@@ -325,6 +322,5 @@ class AjaxController
     }
 }
 
-// Instanciez le contr leur et appelez la m thode principale
 $controller = new AjaxController();
 $controller->handleAjaxRequest();
