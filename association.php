@@ -72,7 +72,5 @@
     <script src="assets/custom/asso.js"></script>
     <script src="assets/custom/count.js"></script>
     <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-
 </body>
-
 </html>
